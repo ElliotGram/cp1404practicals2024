@@ -7,6 +7,11 @@ import random
 minimum_length = random.randint(1, 10)
 
 
+def main():
+    password = get_password()
+    check_length(password)
+
+
 def get_password():
     password = input("Enter a password: ")
     return password
@@ -19,5 +24,5 @@ def check_length(password):
     print("*" * len(password))
 
 
-password = get_password()
-check_length(password)
+if __name__ == "__main__":
+    main()
