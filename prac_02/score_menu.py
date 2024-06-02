@@ -12,23 +12,35 @@ def main():
     choice = input("What do you wish to do: ").upper()
     while choice != "Q":
         if choice == "G":
-            get_valid_score()
+            score = get_valid_score()
         elif choice == "P":
-            result = score_result()
-            print(result)
-    else:
-        print("Goodbye!")
+            if score is not None:
+                result = score_result(score)
+                print(result)
+            else:
+                print("Score has not been set yet.")
+        elif choice == "S":
+            if score is not None:
+                show_stars(score)
+            else:
+                print("Score has not been set yet.")
+        else:
+            print("Invalid choice")
+        print(MENU)
+        choice = input("What do you wish to do: ").upper()
+    print("Goodbye!")
 
 
 def get_valid_score():
-    score = float(input("Enter score(0-100): "))
-    check_score(score)
-
-
-def check_score(score):
-    if 0 >= score or score > 100:
-        print("Invalid score")
-        score = float(input("Enter score: "))
+    while True:
+        try:
+            score = float(input("Enter score(0-100): "))
+            if 0 <= score <= 100:
+                return score
+            else:
+                print("Invalid score")
+        except ValueError:
+            print("Invalid input")
 
 
 def score_result(score):
@@ -38,6 +50,10 @@ def score_result(score):
         return "Passable"
     else:
         return "Bad"
+
+
+def show_stars(score):
+    print("*" * int(score))
 
 
 if __name__ == '__main__':
