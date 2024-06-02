@@ -3,8 +3,11 @@ CP1404/CP5632 - Practical
 Elliot Gram
 """
 
+MENU = "(G)et a valid score\n(P)rint result\n(S)how stars\n(Q)uit"
+
 
 def main():
+    print(MENU)
     score = float(input("Enter score: "))
     check_score(score)
     result = score_result(score)
