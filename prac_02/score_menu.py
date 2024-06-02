@@ -11,15 +11,16 @@ def main():
     choice = input("What do you wish to do: ").upper()
     if choice == "G":
         get_valid_score()
+    elif choice == "P":
+        result = score_result()
+        print(result)
 
-    result = score_result(score)
-    print(result)
+
 
 
 def get_valid_score(score):
-    score = float(input("Enter score: "))
+    score = float(input("Enter score(0-100): "))
     check_score(score)
-
 
 
 def check_score(score):
