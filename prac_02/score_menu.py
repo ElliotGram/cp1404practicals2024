@@ -8,10 +8,18 @@ MENU = "(G)et a valid score\n(P)rint result\n(S)how stars\n(Q)uit"
 
 def main():
     print(MENU)
-    score = float(input("Enter score: "))
-    check_score(score)
+    choice = input("What do you wish to do: ").upper()
+    if choice == "G":
+        get_valid_score()
+
     result = score_result(score)
     print(result)
+
+
+def get_valid_score(score):
+    score = float(input("Enter score: "))
+    check_score(score)
+
 
 
 def check_score(score):
