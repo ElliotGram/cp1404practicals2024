@@ -30,23 +30,36 @@ def is_valid_password(password):
     # Check if length is within the specified range
     if not MIN_LENGTH <= len(password) <= MAX_LENGTH:
         return False
-    # Count lowercase characters
-    number_of_lower = sum(1 for char in password if char.islower())
-    if number_of_lower == 0:
+    # Check for at least one lowercase character
+    if not has_lowercase(password):
         return False
-    # Count uppercase characters
-    number_of_upper = sum(1 for char in password if char.isupper())
-    if number_of_upper == 0:
+    # Check for at least one uppercase character
+    if not has_uppercase(password):
         return False
-    # Count digits
-    number_of_digits = sum(1 for char in password if char.isdigit())
-    if number_of_digits == 0:
+    # Check for at least one digit
+    if not has_digit(password):
         return False
-    # Check if special characters are required
+    # Check for special characters if required
     if IS_SPECIAL_CHARACTER_REQUIRED:
-        number_of_special = sum(1 for char in password if char in SPECIAL_CHARACTERS)
-        if number_of_special == 0:
+        if not has_special_character(password):
             return False
+    return True
+
+def has_lowercase(password):
+    """Check if password contains at least one lowercase character."""
+    return any(char.islower() for char in password)
+
+def has_uppercase(password):
+    """Check if password contains at least one uppercase character."""
+    return any(char.isupper() for char in password)
+
+def has_digit(password):
+    """Check if password contains at least one digit."""
+    return any(char.isdigit() for char in password)
+
+def has_special_character(password):
+    """Check if password contains at least one special character."""
+    return any(char in SPECIAL_CHARACTERS for char in password)
 
 
 main()
