@@ -30,7 +30,12 @@ def is_valid_password(password):
     # Check if length is within the specified range
     if not MIN_LENGTH <= len(password) <= MAX_LENGTH:
         return False
+    # Count lowercase characters
+    number_of_lower = sum(1 for char in password if char.islower())
+    if number_of_lower == 0:
+        return False
     return True
+
 
 
 
