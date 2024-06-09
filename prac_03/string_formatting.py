@@ -48,3 +48,5 @@ print(f"{year} {name} for about ${cost:,.0f}!")
 # 2 ^ 8 is  256
 # 2 ^ 9 is  512
 # 2 ^10 is 1024
+for i in range(11):
+    print("{:<4}{} {:>5}".format(f"2^{i}", "is", 2**i))
