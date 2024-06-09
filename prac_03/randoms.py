@@ -12,3 +12,6 @@ print(random.randrange(3, 10, 2))  # line 2
 # Printing a random floating-point number between 2.5 and 5.5
 print(random.uniform(2.5, 5.5))  # line 3
 # Smallest: 2.5, Largest: 5.5
+
+# Code to produce a random number between 1 and 100 (inclusive)
+print(random.randint(1, 100))
