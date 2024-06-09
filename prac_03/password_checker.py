@@ -42,11 +42,11 @@ def is_valid_password(password):
     number_of_digits = sum(1 for char in password if char.isdigit())
     if number_of_digits == 0:
         return False
-    return True
-
-
-
-
+    # Check if special characters are required
+    if IS_SPECIAL_CHARACTER_REQUIRED:
+        number_of_special = sum(1 for char in password if char in SPECIAL_CHARACTERS)
+        if number_of_special == 0:
+            return False
 
 
 main()
