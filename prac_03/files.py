@@ -14,3 +14,10 @@ with open('numbers.txt', 'r') as file:
     number2 = int(file.readline())
 result = number1 + number2
 print(f"The sum of the first two numbers is: {result}")
+
+# Read and print total for all numbers in file
+total = 0
+with open('numbers.txt', 'r') as file:
+    for line in file:
+        total += int(line)
+print(f"The total for all numbers in the file is: {total}")
