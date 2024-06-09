@@ -38,7 +38,12 @@ def is_valid_password(password):
     number_of_upper = sum(1 for char in password if char.isupper())
     if number_of_upper == 0:
         return False
+    # Count digits
+    number_of_digits = sum(1 for char in password if char.isdigit())
+    if number_of_digits == 0:
+        return False
     return True
+
 
 
 
