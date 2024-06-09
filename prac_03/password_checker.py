@@ -34,7 +34,12 @@ def is_valid_password(password):
     number_of_lower = sum(1 for char in password if char.islower())
     if number_of_lower == 0:
         return False
+    # Count uppercase characters
+    number_of_upper = sum(1 for char in password if char.isupper())
+    if number_of_upper == 0:
+        return False
     return True
+
 
 
 
