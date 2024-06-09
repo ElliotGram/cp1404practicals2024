@@ -9,3 +9,6 @@ print(random.randrange(3, 10, 2))  # line 2
 # Smallest: 3, Largest: 9
 # No, line 2 could not produce a 4 since it skips by 2.
 
+# Printing a random floating-point number between 2.5 and 5.5
+print(random.uniform(2.5, 5.5))  # line 3
+# Smallest: 2.5, Largest: 5.5
