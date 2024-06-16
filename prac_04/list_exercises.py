@@ -21,3 +21,13 @@ USERNAMES = ['jimbo', 'giltson98', 'derekf', 'WhatSup', 'NicolEye', 'swei45',
              'InteractiveConsole', 'InterpreterInterface', 'StartServer', 'bob']
 
 
+def main():
+    username = input("Enter your username: ")
+
+    if username in USERNAMES:
+        print("Access granted")
+    else:
+        print("Access denied")
+
+
+main()
