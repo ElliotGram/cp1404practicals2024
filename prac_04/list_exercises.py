@@ -10,3 +10,6 @@ def main():
     print(f"The smallest number is {min(numbers)}")
     print(f"The largest number is {max(numbers)}")
     print(f"The average of the numbers is {sum(numbers) / len(numbers):.1f}")
+
+
+main()
