@@ -18,3 +18,11 @@ def generate_quick_picks(num_picks):
             new_number = random.randint(MIN_NUMBER, MAX_NUMBER)
             if new_number not in numbers:
                 numbers.append(new_number)
+
+        # Sort the numbers in ascending order
+        numbers.sort()
+
+        # Print the numbers in the required format
+        print(" ".join(f"{number:2}" for number in numbers))
+
+main()
