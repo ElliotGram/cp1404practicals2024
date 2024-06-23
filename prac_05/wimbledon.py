@@ -9,6 +9,7 @@ def read_csv_file(filename):
             data.append(row)
     return data
 
+
 def main():
     filename = 'wimbledon.csv'
     data = read_csv_file(filename)
@@ -16,9 +17,26 @@ def main():
     countries_string = get_countries_of_champions(data)
     display_wimbledon_statistics(champions_count, countries_string)
 
+
 def count_wimbledon_champions(data):
+    champions_count = {}
+    for row in data:
+        champion = row['Champion']
+        if champion in champions_count:
+            champions_count[champion] += 1
+        else:
+            champions_count[champion] = 1
+    return champions_count
+
 
 def get_countries_of_champions(data):
+    countries_set = set()
+    for row in data:
+        countries_set.add(row['Country'])
+    countries_list = sorted(countries_set)  # Sort countries alphabetically
+    countries_string = ', '.join(countries_list)
+    return countries_string
+
 
 def display_wimbledon_statistics(champions_count, countries_string):
     print("Wimbledon Champions:")
