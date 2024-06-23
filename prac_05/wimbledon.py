@@ -21,3 +21,9 @@ def count_wimbledon_champions(data):
 def get_countries_of_champions(data):
 
 def display_wimbledon_statistics(champions_count, countries_string):
+    print("Wimbledon Champions:")
+    for champion, count in sorted(champions_count.items()):
+        print(f"{champion} {count}")
+
+    print("\nThese countries have won Wimbledon:")
+    print(countries_string)
