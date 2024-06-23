@@ -45,3 +45,6 @@ def display_wimbledon_statistics(champions_count, countries_string):
 
     print("\nThese countries have won Wimbledon:")
     print(countries_string)
+
+
+main()
