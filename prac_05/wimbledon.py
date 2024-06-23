@@ -8,3 +8,16 @@ def read_csv_file(filename):
             row = {headers[i]: values[i] for i in range(len(headers))}
             data.append(row)
     return data
+
+def main():
+    filename = 'wimbledon.csv'
+    data = read_csv_file(filename)
+    champions_count = count_wimbledon_champions(data)
+    countries_string = get_countries_of_champions(data)
+    display_wimbledon_statistics(champions_count, countries_string)
+
+def count_wimbledon_champions(data):
+
+def get_countries_of_champions(data):
+
+def display_wimbledon_statistics(champions_count, countries_string):
