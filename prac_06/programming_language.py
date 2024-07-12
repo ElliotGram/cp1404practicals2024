@@ -1,3 +1,4 @@
+"""CP1404/CP5632 Practical - Programming Language Class"""
 class ProgrammingLanguage:
 
     def __init__(self, name, typed, reflection, year):
