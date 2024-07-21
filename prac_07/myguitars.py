@@ -26,7 +26,8 @@ def get_guitar_information(guitars):
 def display_guitar(guitars):
     if guitars:
         print("These are my guitars:")
-        for i, guitar in enumerate(guitars, 1):
+        sorted_guitars = sorted(guitars, key=lambda x: x.year)
+        for i, guitar in enumerate(sorted_guitars, 1):
             vintage_string = ""
             if guitar.is_vintage():
                 vintage_string = " (vintage)"
