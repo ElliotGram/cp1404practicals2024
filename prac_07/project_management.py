@@ -15,6 +15,7 @@ MENU = [
     "- (Q)uit"
 ]
 
+
 def main():
     projects = []
 
@@ -38,6 +39,13 @@ def main():
             filename = input("Enter filename to save projects to: ")
             save_projects(filename, projects)
         elif choice == 'd':
+            display_projects(projects)
+        elif choice == 'f':
+            filter_projects_by_date(projects)
+        elif choice == 'a':
+            add_project(projects)
+        elif choice == 'u':
+            update_project(projects)
             display_projects(projects)
         elif choice == 'q':
             save_choice = input("Would you like to save to projects.txt? ").lower()
@@ -80,11 +88,61 @@ def display_projects(projects):
         print("No projects loaded.")
 
 
-def print_menu():
-    print("- (L)oad projects")
-    print("- (S)ave projects")
-    print("- (D)isplay projects")
-    print("- (Q)uit")
+def filter_projects_by_date(projects):
+    date_str = input("Show projects that start after date (dd/mm/yyyy): ")
+    try:
+        filter_date = datetime.strptime(date_str, "%d/%m/%Y").date()
+        filtered_projects = [project for project in projects if project.year > filter_date.year or (
+                project.year == filter_date.year and project.start_date > filter_date)]
+        display_projects(filtered_projects)
+    except ValueError:
+        print("Invalid date format. Please use dd/mm/yyyy.")
+
+
+def add_project(projects):
+    print("Let's add a new project")
+    name = input("Name: ")
+    date_str = input("Start date (dd/mm/yyyy): ")
+    try:
+        start_date = datetime.strptime(date_str, "%d/%m/%Y").date()
+        priority = int(input("Priority: "))
+        cost_estimate = float(input("Cost estimate: $"))
+        completion_percentage = int(input("Percent complete: "))
+
+        project = Project(name, start_date.year, "", cost_estimate)  # Assuming no arithmetic_sequence
+        projects.append(project)
+        print("Project added successfully.")
+    except ValueError:
+        print("Invalid input format. Please try again.")
+
+
+def update_project(projects):
+    display_projects_with_indices(projects)
+    try:
+        index = int(input("Project choice: "))
+        if 0 <= index < len(projects):
+            project = projects[index]
+            new_percentage = input(f"New Percentage (leave blank to retain {project.completion_percentage}%): ")
+            new_priority = input(f"New Priority (leave blank to retain {project.priority}): ")
+
+            if new_percentage:
+                project.completion_percentage = int(new_percentage)
+            if new_priority:
+                project.priority = int(new_priority)
+            print("Project updated successfully.")
+        else:
+            print("Invalid project choice.")
+    except ValueError:
+        print("Invalid input. Please enter a valid project index.")
+
+
+def display_projects_with_indices(projects):
+    if projects:
+        print("Projects:")
+        for i, project in enumerate(projects):
+            print(f"{i} {project}")
+    else:
+        print("No projects loaded.")
 
 
 if __name__ == "__main__":
