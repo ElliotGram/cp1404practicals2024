@@ -1,9 +1,9 @@
-"""ETA:1 hour 30 minutes"""
-"""CP1404/CP5632 Practical - Project"""
-
 import csv
 from datetime import datetime
-from prac_07.guitar import Project
+from prac_07.project import Project
+
+"""ETA:1 hour 30 minutes"""
+"""CP1404/CP5632 Practical - Project"""
 
 
 def main():
