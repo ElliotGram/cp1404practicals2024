@@ -1,37 +1,44 @@
 """ETA:1 hour 30 minutes"""
-"""CP1404/CP5632 Practical - Basic testing for Guitar class"""
+"""CP1404/CP5632 Practical - Project"""
+
+import csv
+from datetime import datetime
 from prac_07.guitar import Project
 
 
 def main():
     projects = []
 
-    get_project_information(projects)
+    # Load projects from default file
+    load_projects("projects.txt", projects)
 
-    display_project(projects)
-
-
-def get_project_information(projects):
-    name = input("Name: ")
-    while name != "":
-        year = int(input("Year: "))
-        cost = float(input("Cost: $"))
-        project_to_add = Project(name, year, cost)
-        projects.append(project_to_add)
-        print(project_to_add, "added.")
-        name = input("Name: ")
-
-    return projects
+    # Display initial loaded projects
+    display_projects(projects)
 
 
-def display_project(projects):
+def load_projects(filename, projects):
+    with open(filename, newline='') as csvfile:
+        reader = csv.DictReader(csvfile, delimiter='\t')
+        for row in reader:
+            name = row['Name']
+            start_date = datetime.strptime(row['Start Date'], '%d/%m/%Y').date()
+            priority = int(row['Priority'])
+            cost_estimate = float(row['Cost Estimate'])
+            completion_percentage = int(row['Completion Percentage'])
+
+            project = Project(name, start_date.year, "", cost_estimate)  # Assuming no arithmetic_sequence in CSV
+            projects.append(project)
+
+
+def display_projects(projects):
     if projects:
-        print("These are my projects:")
+        print("These are the projects:")
         sorted_projects = sorted(projects, key=lambda x: x.year)
-
-
+        for project in sorted_projects:
+            print(project)
     else:
-        print("No projects")
+        print("No projects loaded.")
 
 
-main()
+if __name__ == "__main__":
+    main()
