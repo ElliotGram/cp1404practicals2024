@@ -3,6 +3,7 @@ from datetime import datetime
 from prac_07.project import Project
 
 """ETA:1 hour 30 minutes"""
+"""Actual Time: 1hour 45minutes"""
 """CP1404/CP5632 Practical - Project"""
 
 MENU = [
