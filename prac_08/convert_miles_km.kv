@@ -10,10 +10,10 @@ BoxLayout:
             orientation: 'vertical'
             Button:
                 text: 'Up'
-                # the following line specifies the function in the app class to call when the button is pressed
-                on_press: app.handle_calculate(input_number.text)
+                on_press: app.increase_input(input_number.text)
             Button:
                 text: 'Down'
+                on_press: app.decrease_input(input_number.text)
     BoxLayout:
         orientation: 'vertical'
         Label:
@@ -22,4 +22,4 @@ BoxLayout:
         Label:
             id: output_label
             font_size: 48
-            color: (40, 245, 145, 0.8)
+            color: (1, 1, 0, 1)
