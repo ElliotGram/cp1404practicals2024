@@ -1,0 +1,25 @@
+BoxLayout:
+    orientation: 'vertical'
+    BoxLayout:
+        orientation: 'horizontal'
+        TextInput:
+            id: input_number
+            text: '0'
+            font_size: 48
+        BoxLayout:
+            orientation: 'vertical'
+            Button:
+                text: 'Up'
+                # the following line specifies the function in the app class to call when the button is pressed
+                on_press: app.handle_calculate(input_number.text)
+            Button:
+                text: 'Down'
+    BoxLayout:
+        orientation: 'vertical'
+        Label:
+            id: message_label
+            text: 'Convert miles to km'
+        Label:
+            id: output_label
+            font_size: 48
+            color: (40, 245, 145, 0.8)
