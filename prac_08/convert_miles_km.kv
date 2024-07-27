@@ -16,9 +16,10 @@ BoxLayout:
                 on_press: app.decrease_input(input_number.text)
     BoxLayout:
         orientation: 'vertical'
-        Label:
+        Button:
             id: message_label
             text: 'Convert miles to km'
+            on_press: app.handle_calculate(input_number.text)
         Label:
             id: output_label
             font_size: 48

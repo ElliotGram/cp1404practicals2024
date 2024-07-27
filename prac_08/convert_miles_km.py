@@ -10,6 +10,7 @@ from kivy.lang import Builder
 from kivy.core.window import Window
 
 __author__ = 'Elliot Gram'
+CONVERSION_RATE = 0.6214
 
 
 class MilesToKmConversion(App):
@@ -25,7 +26,7 @@ class MilesToKmConversion(App):
     def handle_calculate(self, value):
         """ handle calculation (could be button press or other call), output result to label widget """
         try:
-            result = float(value) / 0.6214
+            result = float(value) / CONVERSION_RATE
             self.root.ids.output_label.text = str(result)
         except ValueError:
             pass
