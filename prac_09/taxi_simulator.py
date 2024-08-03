@@ -22,6 +22,19 @@ def choose_taxi(taxis):
         print("Invalid taxi choice")
         return None
 
+def drive_taxi(current_taxi):
+    """Prompt user to input distance and drive the selected taxi."""
+    try:
+        distance = float(input("Drive how far? "))
+        if distance < 0:
+            print("Distance cannot be negative.")
+            return
+        cost = current_taxi.drive(distance)
+        fare = current_taxi.get_fare()
+        print(f"Your {current_taxi.name} trip cost you ${fare:.2f}")
+        return fare
+    except ValueError:
+        print("Invalid distance input")
 
 function main:
     Create taxis
