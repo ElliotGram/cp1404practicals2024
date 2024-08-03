@@ -36,29 +36,43 @@ def drive_taxi(current_taxi):
     except ValueError:
         print("Invalid distance input")
 
-function main:
-    Create taxis
-    Set current_taxi to None
-    Set total_bill to 0
+def main():
+    taxis = [
+        Taxi("Prius", 100, 1.23),
+        SilverServiceTaxi("Limo", 100, 2.00, 1.5),
+        SilverServiceTaxi("Hummer", 200, 4.00, 2.0)
+    ]
 
-    Repeat until user_input is 'q':
-        Show menu options
-        Get user_input
+    current_taxi = None
+    total_bill = 0.0
 
-        if user_input is 'c':
-            Show taxis
-            Set current_taxi based on choice
+    user_input = ""
+    while user_input != 'q':
+        print("Let's drive!")
+        print("q)uit, c)hoose taxi, d)rive")
+        user_input = input(">>> ").lower()
 
-        else if user_input is 'd':
+        if user_input == 'c':
+            print_taxis(taxis)
+            current_taxi = choose_taxi(taxis)
+            if current_taxi:
+                print(f"Current taxi: {current_taxi.name}")
+            print(f"Bill to date: ${total_bill:.2f}")
+        elif user_input == 'd':
             if current_taxi is None:
-                Show message to choose taxi first
+                print("You need to choose a taxi before you can drive")
             else:
-                Get distance
-                Calculate cost
-                Update total_bill
+                fare = drive_taxi(current_taxi)
+                if fare is not None:
+                    total_bill += fare
+                    print(f"Bill to date: ${total_bill:.2f}")
+        elif user_input != 'q':
+            print("Invalid option")
 
-        else:
-            Show invalid option message
+    print(f"Total trip cost: ${total_bill:.2f}")
+    print("Taxis are now:")
+    for i, taxi in enumerate(taxis):
+        print(f"{i} - {taxi}")
 
-    Show total_bill
-    Show final state of taxis
+if __name__ == "__main__":
+    main()
